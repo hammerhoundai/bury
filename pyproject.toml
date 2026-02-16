@@ -1,0 +1,76 @@
+[project]
+name = "vault-cli"
+version = "2.0.0"
+description = "A minimal, secure, hierarchical password/secrets manager with PID-bound sessions for AI agent security"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    { name = "Vault CLI Contributors" }
+]
+license = { text = "MIT" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Security :: Cryptography",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+keywords = ["vault", "password", "secrets", "cryptography", "security", "cli", "ai-agents"]
+dependencies = [
+    "pynacl>=1.5.0",
+    "psutil>=5.9.0; sys_platform != 'linux'",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "ruff>=0.5.0",
+    "mypy>=1.0.0",
+]
+
+[project.scripts]
+vault = "vault_cli.main:main"
+vault-proxy = "vault_cli.vault_proxy:main"
+
+[project.urls]
+Homepage = "https://github.com/user/vault-cli"
+Repository = "https://github.com/user/vault-cli"
+Issues = "https://github.com/user/vault-cli/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vault_cli"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "D", "UP", "B", "C4", "SIM"]
+ignore = ["D100", "D104"]
+
+[tool.mypy]
+strict = true
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+]

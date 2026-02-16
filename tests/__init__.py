@@ -1,0 +1,1 @@
+"""Vault CLI test suite."""
