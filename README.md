@@ -1,10 +1,10 @@
-# Vault CLI
+# Bury
 
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
-A minimal, secure, hierarchical password and secrets manager with **PID-bound sessions for AI agent security**.
+A secrets manager that buries your AI agent credentials deep. Minimal, secure, hierarchical password and secrets manager with **PID-bound sessions for AI agent security**.
 
 **Key Features:**
 - 🔐 **Strong cryptography**: Argon2id + XSalsa20-Poly1305 (via libsodium/PyNaCl)
@@ -19,7 +19,7 @@ A minimal, secure, hierarchical password and secrets manager with **PID-bound se
 
 ## Table of Contents
 
-- [Why Vault CLI?](#why-vault-cli)
+- [Why Bury?](#why-bury)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
 - [PID-Bound Sessions (v2.0)](#pid-bound-sessions-v20)
@@ -32,7 +32,7 @@ A minimal, secure, hierarchical password and secrets manager with **PID-bound se
 
 ---
 
-## Why Vault CLI?
+## Why Bury?
 
 AI agents (Claude Code, Cursor, Copilot) create a new credential security problem:
 
@@ -40,7 +40,7 @@ AI agents (Claude Code, Cursor, Copilot) create a new credential security proble
 - **Traditional password managers** require interactive auth per access—unsuitable for agents
 - **No existing tool provides real-time visibility** into what credentials AI agents access
 
-Vault CLI solves this with **PID-bound sessions**:
+Bury solves this with **PID-bound sessions**:
 
 ```
 ┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
@@ -56,7 +56,7 @@ Vault CLI solves this with **PID-bound sessions**:
 └─────────────────┘                       └──────────────────┘
 ```
 
-| Feature | Vault CLI | Pass | 1Password CLI | HashiCorp Vault |
+| Feature | Bury | Pass | 1Password CLI | HashiCorp Vault |
 |---------|-----------|------|---------------|-----------------|
 | No server required | ✅ | ✅ | ❌ | ❌ |
 | PID-bound sessions | ✅ | ❌ | ❌ | ❌ |
@@ -74,20 +74,20 @@ Vault CLI solves this with **PID-bound sessions**:
 Install directly from the repository using `uv`:
 
 ```bash
-uv tool install git+https://github.com/user/vault-cli.git
+uv tool install git+https://github.com/hammerhoundai/bury.git
 ```
 
 Or using `pip`:
 
 ```bash
-pip install git+https://github.com/user/vault-cli.git
+pip install git+https://github.com/hammerhoundai/bury.git
 ```
 
 ### From Source (Development)
 
 ```bash
-git clone https://github.com/user/vault-cli.git
-cd vault-cli
+git clone https://github.com/hammerhoundai/bury.git
+cd bury
 uv sync
 ```
 
@@ -109,9 +109,9 @@ uv run ruff check .
 Once published:
 
 ```bash
-uv tool install vault-cli
+uv tool install bury
 # or
-pip install vault-cli
+pip install bury
 ```
 
 ---
@@ -465,7 +465,7 @@ vault 2.0.0
 
 ### vs `pass` (Password Store)
 
-| | Vault CLI | pass |
+| | Bury | pass |
 |--|-----------|------|
 | Storage | SQLite | GPG-encrypted files |
 | PID-bound sessions | ✅ | ❌ |
@@ -475,7 +475,7 @@ vault 2.0.0
 
 ### vs 1Password CLI
 
-| | Vault CLI | 1Password CLI |
+| | Bury | 1Password CLI |
 |--|-----------|---------------|
 | Cost | Free | Subscription |
 | Offline | ✅ | Partial |
@@ -484,7 +484,7 @@ vault 2.0.0
 
 ### vs HashiCorp Vault
 
-| | Vault CLI | HashiCorp Vault |
+| | Bury | HashiCorp Vault |
 |--|-----------|-----------------|
 | Server | None | Required |
 | PID sessions | ✅ | ❌ |
@@ -500,8 +500,8 @@ Contributions welcome! Please submit a Pull Request.
 ### Development Setup
 
 ```bash
-git clone https://github.com/user/vault-cli.git
-cd vault-cli
+git clone https://github.com/hammerhoundai/bury.git
+cd bury
 uv sync
 ```
 
@@ -522,7 +522,7 @@ uv run mypy src/
 ### Project Structure
 
 ```
-vault-cli/
+bury/
 ├── src/vault_cli/
 │   ├── __init__.py
 │   ├── main.py          # Main CLI implementation
