@@ -43,17 +43,17 @@ AI agents (Claude Code, Cursor, Copilot) create a new credential security proble
 Bury solves this with **PID-bound sessions**:
 
 ```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   vault agent   │────▶│   Vault Daemon  │────▶│   ~/.vault/     │
-│   (launcher)    │     │   (key holder)  │     │   (SQLite DB)   │
-└────────┬────────┘     └────────┬────────┘     └─────────────────┘
-         │                       │
-         │ launches              │
-         ▼                       │
-┌─────────────────┐              │         ┌─────────────────┐
-│  Claude/Code    │──────────────┘         │  ~/.vault/      │
-│  (AI agent)     │    Unix socket         │  access.log     │
-└─────────────────┘                       └─────────────────┘
+┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
+│   vault agent   │─────▶│   Vault Daemon  │─────▶│   ~/.vault/     │
+│   (launcher)    │      │   (key holder)  │      │   (SQLite DB)   │
+└────────┬────────┘      └────────┬────────┘      └─────────────────┘
+         │                        │
+         │ launches               │
+         ▼                        │
+┌─────────────────┐               │      ┌─────────────────┐
+│  Claude/Code    │───────────────┘      │  ~/.vault/      │
+│  (AI agent)     │   Unix socket        │  access.log     │
+└─────────────────┘                      └─────────────────┘
 ```
 
 | Feature | Bury | Pass | 1Password CLI | HashiCorp Vault |
