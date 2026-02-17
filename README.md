@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
-A secrets manager that buries your AI agent credentials deep. Minimal, secure, hierarchical password and secrets manager with **PID-bound sessions for AI agent security**.
+Secrets manager purpose-built for AI agents. Bury credentials securely, fetch them safely. Minimal, secure, hierarchical password and secrets manager with **PID-bound sessions for AI agent security**.
 
 **Key Features:**
 - 🔐 **Strong cryptography**: Argon2id + XSalsa20-Poly1305 (via libsodium/PyNaCl)
@@ -43,17 +43,17 @@ AI agents (Claude Code, Cursor, Copilot) create a new credential security proble
 Bury solves this with **PID-bound sessions**:
 
 ```
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│   vault agent   │────▶│   Vault Daemon   │────▶│   ~/.vault/     │
-│   (launcher)    │     │   (key holder)   │     │   (SQLite DB)   │
-└────────┬────────┘     └────────┬─────────┘     └─────────────────┘
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   vault agent   │────▶│   Vault Daemon  │────▶│   ~/.vault/     │
+│   (launcher)    │     │   (key holder)  │     │   (SQLite DB)   │
+└────────┬────────┘     └────────┬────────┘     └─────────────────┘
          │                       │
          │ launches              │
          ▼                       │
-┌─────────────────┐              │         ┌──────────────────┐
-│  Claude/Code    │──────────────┘         │  ~/.vault/       │
-│  (AI agent)     │    Unix socket         │  access.log      │
-└─────────────────┘                       └──────────────────┘
+┌─────────────────┐              │         ┌─────────────────┐
+│  Claude/Code    │──────────────┘         │  ~/.vault/      │
+│  (AI agent)     │    Unix socket         │  access.log     │
+└─────────────────┘                       └─────────────────┘
 ```
 
 | Feature | Bury | Pass | 1Password CLI | HashiCorp Vault |
