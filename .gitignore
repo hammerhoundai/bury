@@ -38,3 +38,7 @@ Thumbs.db
 
 # Local development docs (not for public repo)
 local-docs/
+*.skill
+*.jpeg
+*.jpg
+*.png
